@@ -1,0 +1,817 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>600 Mots TOEIC – B2/C1</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#0f172a;
+  --card:#111827;
+  --muted:#94a3b8;
+  --accent:#22c55e;
+  --accent2:#38bdf8;
+  --border:#1f2937;
+}
+*{box-sizing:border-box}
+body{
+  margin:0;
+  font-family:Inter,system-ui,Arial;
+  background:linear-gradient(180deg,#020617,#020617 200px,#020617);
+  color:#e5e7eb;
+}
+header{
+  position:sticky;
+  top:0;
+  z-index:10;
+  backdrop-filter: blur(10px);
+  background:rgba(2,6,23,.8);
+  border-bottom:1px solid var(--border);
+}
+.container{
+  max-width:1200px;
+  margin:auto;
+  padding:20px;
+}
+.title{
+  font-size:28px;
+  font-weight:700;
+  letter-spacing:-.5px;
+}
+.subtitle{
+  color:var(--muted);
+  margin-top:4px;
+}
+.search{
+  margin-top:16px;
+  display:flex;
+  gap:10px;
+}
+.search input{
+  flex:1;
+  padding:12px 14px;
+  border-radius:12px;
+  border:1px solid var(--border);
+  background:#020617;
+  color:white;
+  font-size:14px;
+}
+.grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fill,minmax(280px,1fr));
+  gap:16px;
+  margin-top:20px;
+}
+.card{
+  background:linear-gradient(180deg,#020617,#020617);
+  border:1px solid var(--border);
+  border-radius:16px;
+  padding:16px;
+  transition:.2s ease;
+}
+.card:hover{
+  transform:translateY(-2px);
+  border-color:#334155;
+}
+.word{
+  font-size:18px;
+  font-weight:600;
+  color:white;
+}
+.translation{
+  color:var(--accent);
+  margin-top:2px;
+  font-weight:500;
+}
+.example{
+  margin-top:8px;
+  font-size:13px;
+  color:var(--muted);
+  line-height:1.4;
+}
+.section{
+  margin-top:40px;
+}
+.section h2{
+  font-size:20px;
+  margin-bottom:10px;
+  border-left:4px solid var(--accent2);
+  padding-left:10px;
+}
+.footer{
+  margin:40px 0;
+  text-align:center;
+  color:var(--muted);
+}
+.badge{
+  display:inline-block;
+  padding:4px 8px;
+  border-radius:999px;
+  background:#020617;
+  border:1px solid var(--border);
+  font-size:12px;
+  margin-top:6px;
+}
+</style>
+</head>
+<body>
+<header>
+  <div class="container">
+    <div class="title">600 Mots TOEIC – Niveau B2/C1</div>
+    <div class="subtitle">Mot • Traduction • Exemple d'usage</div>
+    <div class="search">
+      <input id="search" placeholder="Rechercher un mot anglais, français ou exemple..." />
+    </div>
+  </div>
+</header>
+
+<main class="container" id="content"></main>
+
+<div class="footer">Optimisé pour réviser rapidement • Recherche instantanée • Copier-coller dans Anki</div>
+
+<script>
+const data = `--- BUSINESS & FINANCE ---
+1. allocate | allouer | The budget was allocated across departments.
+2. leverage | tirer parti de | We can leverage our existing network.
+3. streamline | rationaliser | We need to streamline our processes.
+4. liable | responsable (légalement) | The company is liable for damages.
+5. remuneration | rémunération | The remuneration package includes bonuses.
+6. viable | viable | Is this a viable solution?
+7. procurement | approvisionnement | The procurement team handles all orders.
+8. subsidiary | filiale | Our subsidiary in Japan reported strong results.
+9. fiscal | fiscal | The fiscal year ends in December.
+10. equity | capitaux propres / équité | Equity financing avoids debt.
+11. depreciation | dépréciation | Asset depreciation affects tax calculations. 
+12. overhead | frais généraux | We need to reduce overhead costs.
+13. collateral | garantie (prêt) | The loan requires collateral.
+14. audit | audit | The annual audit revealed discrepancies.
+15. turnover | chiffre d'affaires / rotation | Staff turnover is high this quarter.
+16. merger | fusion | The merger was approved by shareholders. 
+17. acquisition | acquisition | The acquisition doubled our market share.
+18. outsource | externaliser | We outsource our IT support.
+19. benchmark | référence / étalon | Set a benchmark for performance.
+20. stakeholder | partie prenante | All stakeholders were informed.
+21. incentive | incitation | Bonuses serve as financial incentives.
+22. forecast | prévision | The sales forecast looks optimistic.
+23. comply | se conformer | All staff must comply with regulations.
+24. compliance | conformité | Compliance with the law is mandatory.
+25. deficit | déficit | The budget showed a significant deficit.
+26. surplus | excédent | A budget surplus allows reinvestment.
+27. franchise | franchise | They opened a franchise location downtown.
+28. entrepreneur | entrepreneur | The entrepreneur secured venture funding.
+29. prospectus | prospectus / brochure | Review the prospectus before investing.
+30. dividend | dividende | Shareholders received a quarterly dividend.
+31. invoice | facture | Please send the invoice by email.
+32. reimburse | rembourser | Expenses will be reimbursed within 30 days.
+33. solvent | solvable | The company remains solvent despite losses.
+34. revenue | revenus | Revenue grew by 12% this year.
+35. expenditure | dépense | Capital expenditure exceeded the budget.
+36. liability | passif / responsabilité | Liabilities must be disclosed.
+37. portfolio | portefeuille | She manages a diverse investment portfolio.
+38. commodity | matière première | Oil is a globally traded commodity.
+39. inflation | inflation | Rising inflation affects purchasing power.
+40. deductible | déductible | Business meals are tax deductible.
+41. arbitration | arbitrage (juridique) | Disputes are settled through arbitration.
+42. severance | indemnité de licenciement | He received a severance package.
+43. overhead | frais généraux | Reducing overhead improves margins.
+44. quota | quota | Each salesperson has a monthly quota.
+45. subsidy | subvention | Government subsidies support local farmers.
+46. tariff | tarif douanier | New tariffs affected import costs.
+47. venture | entreprise risquée | It was a joint venture between two firms.
+48. yield | rendement | The bond yield dropped this quarter.
+49. write-off | dépréciation / radiation | The bad debt was written off.
+50. bottom line | résultat net | The bottom line improved significantly.
+
+--- MANAGEMENT & HR ---
+51. appraisal | évaluation (performance) | Annual appraisals are conducted in March.
+52. delegate | déléguer | Managers must delegate effectively.
+53. redundant | licencié (UK) / redondant | Twenty employees were made redundant.
+54. recruit | recruter | We are recruiting for three new positions.
+55. retain | retenir (employés) | It's costly to retain top talent.
+56. grievance | grief / réclamation | He filed a formal grievance.
+57. probationary | à l'essai | He is still in his probationary period.
+58. incumbent | titulaire du poste | The incumbent manager retires next month.
+59. mediator | médiateur | A mediator was brought in to resolve the dispute.
+60. jurisdiction | juridiction | This falls under federal jurisdiction.
+61. entitlement | droit / avantage | Holiday entitlement is 25 days per year.
+62. redundancy | licenciement économique | Redundancies were announced last Friday.
+63. benchmark | référence | We benchmark salaries against competitors.
+64. headcount | effectif | The headcount increased by 10% this year.
+65. interim | intérimaire | An interim manager was appointed.
+66. scope | périmètre / portée | The scope of the project was expanded.
+67. tenure | ancienneté / mandat | She has a tenure of five years.
+68. workload | charge de travail | The workload has increased significantly.
+69. liaison | agent de liaison | She acts as a liaison between departments.
+70. hierarchy | hiérarchie | The corporate hierarchy is quite flat.
+71. succession | succession | A succession plan is in place.
+72. mentor | mentor | Every new hire is assigned a mentor.
+73. performance review | entretien d'évaluation | Performance reviews are held quarterly.
+74. burnout | épuisement professionnel | Burnout is a growing concern.
+75. attrition | attrition / départ naturel | Staff attrition reduced headcount.
+
+--- CONTRACTS & LEGAL ---
+76. clause | clause | Read the termination clause carefully.
+77. breach | violation / rupture | A breach of contract was alleged.
+78. binding | contraignant | This agreement is legally binding.
+79. void | nul et non avenu | The contract was declared void.
+80. waiver | renonciation | Sign the waiver before participating.
+81. indemnity | indemnité | The indemnity clause protects both parties.
+82. arbitrate | arbitrer | The parties agreed to arbitrate.
+83. statute | loi / statut | Check the relevant statute before proceeding.
+84. litigation | litige | The company wishes to avoid litigation.
+85. provisional | provisoire | A provisional agreement was reached.
+86. ratify | ratifier | The board ratified the new policy.
+87. disclose | divulguer | Companies must disclose financial results.
+88. confidentiality | confidentialité | The NDA ensures confidentiality.
+89. remedy | recours | What legal remedy is available?
+90. injunction | injonction | A court injunction halted the project.
+91. deposition | déposition | He gave a deposition in the lawsuit.
+92. enforce | faire appliquer | The court will enforce the contract.
+93. lien | gage / privilège | A lien was placed on the property.
+94. negligence | négligence | Negligence caused the accident.
+95. patent | brevet | The invention is protected by a patent.
+96. trademark | marque déposée | The trademark was registered last year.
+97. copyright | droit d'auteur | Copyright protects original works.
+98. proprietary | exclusif / propriétaire | This is proprietary software.
+99. consent | consentement | Written consent is required.
+100. plaintiff | plaignant | The plaintiff seeks damages.
+
+--- LOGISTICS & SUPPLY CHAIN ---
+101. dispatch | expédier | The order was dispatched yesterday.
+102. freight | fret | Freight costs have increased.
+103. customs | douane | The shipment was delayed at customs.
+104. inventory | inventaire / stock | Inventory levels are critically low.
+105. lead time | délai | The lead time is 10 business days.
+106. consignment | lot / expédition | A consignment of goods arrived.
+107. warehouse | entrepôt | The warehouse holds excess stock.
+108. backlog | arriéré / carnet de commandes | There is a backlog of orders.
+109. vendor | fournisseur | The vendor failed to meet the deadline.
+110. shortage | pénurie | A component shortage halted production.
+111. logistics | logistique | Logistics must be coordinated carefully.
+112. manifest | manifeste / liste | Check the cargo manifest.
+113. transit | transit | Goods are currently in transit.
+114. throughput | débit | Increasing throughput requires automation.
+115. turnaround | délai d'exécution | The turnaround time is 48 hours.
+116. carrier | transporteur | Which carrier do you use?
+117. docking | accostage / quai | The docking schedule was revised.
+118. perishable | périssable | Perishable goods need refrigeration.
+119. expedite | accélérer | Can we expedite this delivery?
+120. palletize | palettiser | Goods must be palletized before shipping.
+
+--- MARKETING & SALES ---
+121. demographics | données démographiques | Study the target demographics.
+122. positioning | positionnement | Brand positioning is key to success.
+123. pitch | argumentaire | He gave a compelling sales pitch.
+124. conversion | conversion | The conversion rate improved by 8%.
+125. retention | fidélisation | Customer retention is more cost-effective.
+126. upsell | vendre un produit supérieur | Train staff to upsell effectively.
+127. endorsement | soutien / recommandation | A celebrity endorsement boosted sales.
+128. segmentation | segmentation | Market segmentation guides our strategy.
+129. campaign | campagne | The campaign generated strong leads.
+130. brand equity | valeur de la marque | Strong brand equity commands premium prices.
+131. niche | niche | They focus on a niche market.
+132. penetration | pénétration | Market penetration pricing attracts customers.
+133. testimonial | témoignage | Customer testimonials build trust.
+134. outreach | sensibilisation | Our outreach efforts increased awareness.
+135. engagement | engagement | Social media engagement is growing.
+136. insight | analyse / compréhension | Consumer insights drive product development.
+137. rollout | déploiement | The product rollout is scheduled for Q3.
+138. rebranding | rebranding | The rebranding improved public perception.
+139. viral | viral | The campaign went viral overnight.
+140. funnel | entonnoir | Leads move through the sales funnel.
+
+--- MEETINGS & COMMUNICATION ---
+141. agenda | ordre du jour | Please review the agenda before the meeting.
+142. adjourn | lever la séance | The meeting was adjourned at 5 PM.
+143. consensus | consensus | We reached a consensus on the proposal.
+144. dissent | désaccord | Two members expressed dissent.
+145. minutes | procès-verbal | The minutes were circulated after the meeting.
+146. defer | reporter | The decision was deferred to next week.
+147. clarify | clarifier | Could you clarify your point?
+148. elaborate | développer | Please elaborate on your proposal.
+149. reiterate | réitérer | Let me reiterate our main objectives.
+150. convene | convoquer / se réunir | The committee will convene on Monday.
+151. quorum | quorum | We need a quorum to proceed with the vote.
+152. resolution | résolution | A resolution was passed unanimously.
+153. verbatim | mot pour mot | Please transcribe verbatim.
+154. tentative | provisoire | We have a tentative agreement.
+155. concise | concis | Keep your presentation concise.
+156. coherent | cohérent | The argument must be coherent.
+157. convey | communiquer / transmettre | Convey the message clearly.
+158. acknowledge | accuser réception / reconnaître | Please acknowledge receipt.
+159. address | aborder / s'adresser à | We must address this issue immediately.
+160. outline | résumer / présenter les grandes lignes | She outlined the key points.
+
+--- TECHNOLOGY & IT ---
+161. infrastructure | infrastructure | We are upgrading our IT infrastructure.
+162. encryption | chiffrement | All data is protected by encryption.
+163. bandwidth | bande passante | We need more bandwidth for video calls.
+164. scalable | évolutif | The system must be scalable.
+165. deploy | déployer | The software will be deployed next week.
+166. redundancy | redondance | System redundancy prevents downtime.
+167. interface | interface | The user interface was redesigned.
+168. latency | latence | Low latency is critical for gaming.
+169. firewall | pare-feu | The firewall blocked the intrusion attempt.
+170. migration | migration | Data migration took three days.
+171. legacy system | système obsolète | The legacy system needs replacing.
+172. vendor lock-in | dépendance fournisseur | Avoid vendor lock-in when possible.
+173. patch | correctif | Install the security patch immediately.
+174. downtime | temps d'arrêt | Downtime costs the company thousands per hour.
+175. backup | sauvegarde | Daily backups are mandatory.
+176. iterate | itérer | The team will iterate on the prototype.
+177. debug | déboguer | The developer spent hours debugging.
+178. protocol | protocole | Follow the standard communication protocol.
+179. integration | intégration | API integration was completed successfully.
+180. automation | automatisation | Automation reduces human error.
+
+--- ADJECTIVES (tricky & high-value) ---
+181. stringent | strict / rigoureux | Stringent safety measures are in place.
+182. paramount | primordial | Safety is of paramount importance.
+183. pivotal | crucial | This was a pivotal moment for the company.
+184. inherent | inhérent | There are inherent risks in any investment.
+185. tangible | tangible | We need tangible results.
+186. intangible | intangible | Brand value is an intangible asset.
+187. feasible | faisable | Is a merger feasible at this stage?
+188. detrimental | néfaste | Stress is detrimental to productivity.
+189. substantial | substantiel | A substantial increase was recorded.
+190. preliminary | préliminaire | A preliminary report was submitted.
+191. imminent | imminent | An imminent announcement is expected.
+192. comprehensive | complet | A comprehensive audit was conducted.
+193. provisional | provisoire | This is a provisional arrangement.
+194. redundant | redondant / superflu | That step is now redundant.
+195. ambiguous | ambigu | The contract wording was ambiguous.
+196. concise | concis | The report should be concise.
+197. diligent | diligent | She is a diligent and reliable employee.
+198. transparent | transparent | Be transparent about costs.
+199. autonomous | autonome | The team operates autonomously.
+200. compliant | conforme | All products must be compliant with regulations.
+201. adverse | défavorable | Adverse conditions affected production.
+202. lucrative | lucratif | This is a lucrative opportunity.
+203. redundant | en double / inutile | Redundant processes should be eliminated.
+204. meticulous | méticuleux | He is meticulous about detail.
+205. compelling | convaincant | She made a compelling case for investment.
+206. unprecedented | sans précédent | Unprecedented growth was recorded.
+207. negligible | négligeable | The impact was negligible.
+208. ambivalent | ambivalent | Management seems ambivalent about the merger.
+209. volatile | volatile | The market remains volatile.
+210. sustainable | durable | We need a sustainable business model.
+
+--- VERBS (tricky & high-value) ---
+211. facilitate | faciliter | The new system facilitates communication.
+212. mitigate | atténuer | Steps were taken to mitigate risks.
+213. mandate | imposer / mandater | The regulation mandates annual reporting.
+214. rescind | rescinder / annuler | The offer was rescinded.
+215. defer | différer | Payment can be deferred for 90 days.
+216. convene | convoquer | The board convened an emergency meeting.
+217. substantiate | étayer / justifier | Can you substantiate your claim?
+218. anticipate | anticiper | We anticipate strong Q4 results.
+219. consolidate | consolider | The company aims to consolidate its position.
+220. implement | mettre en œuvre | The plan will be implemented next month.
+221. negotiate | négocier | Both parties agreed to negotiate.
+222. authorize | autoriser | Only managers can authorize expenses.
+223. verify | vérifier | Please verify the figures before submission.
+224. coordinate | coordonner | She coordinates all project activities.
+225. monitor | surveiller | Progress must be monitored weekly.
+226. assess | évaluer | We need to assess the risks.
+227. revise | réviser | Please revise the proposal accordingly.
+228. submit | soumettre | Submit your report by Friday.
+229. justify | justifier | Justify your budget requests in writing.
+230. prioritize | prioriser | Prioritize tasks based on urgency.
+231. escalate | escalader / remonter | Escalate the issue to your manager.
+232. allocate | allouer | Resources will be allocated accordingly.
+233. terminate | mettre fin à | The contract was terminated early.
+234. renew | renouveler | Remember to renew your subscription.
+235. acknowledge | reconnaître | Please acknowledge receipt of this email.
+236. notify | notifier | Notify clients of any delays.
+237. amend | modifier | The clause was amended by both parties.
+238. oversee | superviser | She oversees all marketing activities.
+239. liaise | assurer la liaison | Liaise with the client directly.
+240. incentivize | inciter | Bonuses incentivize high performance.
+
+--- NOUNS (tricky & high-value) ---
+241. discrepancy | écart / divergence | There is a discrepancy in the figures.
+242. prerequisite | prérequis | A degree is a prerequisite for this role.
+243. contingency | éventualité | Have a contingency plan in place.
+244. caveat | réserve / mise en garde | There is one important caveat.
+245. concession | concession | Both sides made concessions.
+246. embargo | embargo | An embargo was placed on the goods.
+247. backlog | arriéré | We have a backlog of unanswered emails.
+248. leverage | effet de levier | Financial leverage increases returns.
+249. turnover | rotation / CA | High staff turnover is costly.
+250. benchmark | référence | What is the industry benchmark?
+251. due diligence | vérification préalable | Conduct due diligence before acquiring.
+252. endorsement | approbation | The proposal received board endorsement.
+253. niche | niche | They carved out a profitable niche.
+254. constraint | contrainte | Budget constraints limit our options.
+255. milestone | jalon | We reached a key milestone this month.
+256. initiative | initiative | A new cost-cutting initiative was launched.
+257. momentum | élan | The project is gaining momentum.
+258. protocol | protocole | Follow the standard protocol.
+259. ramification | ramification / conséquence | Consider the ramifications of this decision.
+260. synopsis | résumé | Provide a brief synopsis of the report.
+261. discrepancy | divergence | A discrepancy was found in the accounts.
+262. shortfall | déficit / manque | There is a shortfall of 50 units.
+263. rationale | justification | Explain the rationale behind your choice.
+264. incentive | incitation | What incentives are offered to employees?
+265. grievance | grief | She filed a formal grievance.
+266. scrutiny | examen minutieux | The accounts were under scrutiny.
+267. turnaround | redressement | The company achieved a remarkable turnaround.
+268. bottleneck | goulot d'étranglement | The approval process is a bottleneck.
+269. safeguard | mesure de protection | Safeguards are in place.
+270. contingency | plan de secours | We need a contingency for supply chain issues.
+
+--- PREPOSITIONS & CONNECTORS (souvent piégeux) ---
+271. pursuant to | conformément à | Pursuant to our agreement...
+272. with regard to | en ce qui concerne | With regard to your inquiry...
+273. notwithstanding | nonobstant / malgré | Notwithstanding the delay, we proceeded.
+274. henceforth | dorénavant | Henceforth, all requests must be written.
+275. in lieu of | à la place de | Time off in lieu of overtime pay.
+276. on behalf of | au nom de | I am writing on behalf of the CEO.
+277. in compliance with | conformément à | In compliance with regulations...
+278. subject to | sous réserve de | Subject to board approval.
+279. as per | conformément à | As per your instructions...
+280. in conjunction with | en collaboration avec | In conjunction with our partners...
+
+--- PHRASAL VERBS (très fréquents au TOEIC) ---
+281. carry out | effectuer | Carry out the inspection immediately.
+282. set up | mettre en place | Set up a meeting for Thursday.
+283. take over | reprendre / succéder | She took over as director last year.
+284. draw up | rédiger | Draw up a contract for the new hire.
+285. look into | examiner | We will look into the complaint.
+286. follow up | donner suite à | Please follow up on the proposal.
+287. put forward | soumettre / proposer | He put forward a new strategy.
+288. turn down | refuser | The offer was turned down.
+289. phase out | éliminer progressivement | The product will be phased out.
+290. roll out | déployer | The update will be rolled out next week.
+291. hand in | remettre | Hand in your report by noon.
+292. write off | passer en pertes | The debt was written off.
+293. break even | atteindre le seuil de rentabilité | We expect to break even by Q3.
+294. take on | assumer / embaucher | We are taking on new clients.
+295. fall through | échouer / tomber à l'eau | The deal fell through at the last minute.
+296. back out | se retirer | They backed out of the agreement.
+297. account for | représenter / expliquer | Asia accounts for 40% of revenue.
+298. scale up | augmenter l'échelle | We plan to scale up production.
+299. cut back | réduire | Budgets have been cut back significantly.
+300. sign off on | approuver | The manager signed off on the report.
+
+--- EMAILS & CORRESPONDENCE ---
+301. regarding | concernant | Regarding your request of April 10th...
+302. attached | ci-joint | Please find attached the document.
+303. enclosed | ci-inclus | Enclosed please find the signed contract.
+304. forthcoming | à venir / prochain | More details will be forthcoming.
+305. rectify | rectifier | We will rectify the error immediately.
+306. revert | revenir / répondre | Please revert at your earliest convenience.
+307. expedite | accélérer | Could you expedite this request?
+308. confirmation | confirmation | We await your confirmation.
+309. circulate | faire circuler | Please circulate the agenda in advance.
+310. urgent | urgent | This is a matter of urgent attention.
+311. pending | en attente | The approval is still pending.
+312. tentative | provisoire | A tentative date has been set.
+313. supersede | remplacer | This document supersedes all previous versions.
+314. in due course | en temps voulu | You will be notified in due course.
+315. at your earliest convenience | dès que possible | Please respond at your earliest convenience.
+
+--- NUMBERS, DATA & ANALYSIS ---
+316. projection | projection | Sales projections look positive.
+317. fluctuation | fluctuation | Currency fluctuations affect margins.
+318. trajectory | trajectoire | The growth trajectory is encouraging.
+319. disparity | disparité | There is a wage disparity between genders.
+320. margin | marge | Profit margins have narrowed.
+321. aggregate | agrégat / total | The aggregate cost was higher than expected.
+322. cumulative | cumulatif | Cumulative losses exceeded $10 million.
+323. variable | variable | Variable costs fluctuate with output.
+324. fixed cost | coût fixe | Fixed costs remain constant regardless.
+325. break-even point | seuil de rentabilité | The break-even point is 500 units.
+326. indicator | indicateur | KPIs are key performance indicators.
+327. correlation | corrélation | Is there a correlation between the two variables?
+328. deviation | déviation / écart | Any deviation must be reported.
+329. benchmark | référence comparative | The benchmark return is 8% annually.
+330. threshold | seuil | Output fell below the acceptable threshold.
+
+--- WORKPLACE SCENARIOS ---
+331. appoint | nommer | She was appointed as project lead.
+332. resign | démissionner | He resigned effective immediately.
+333. dismiss | renvoyer | The employee was dismissed for misconduct.
+334. suspend | suspendre | His account was suspended pending review.
+335. promote | promouvoir | She was promoted to senior manager.
+336. relocate | déménager / muter | He was asked to relocate to Singapore.
+337. secondment | détachement | She is on secondment to the Paris office.
+338. maternity leave | congé maternité | She is currently on maternity leave.
+339. sabbatical | sabbatique | He took a six-month sabbatical.
+340. flexible working | travail flexible | Flexible working is now standard.
+341. remote | à distance | Most employees work remotely.
+342. hybrid | hybride | A hybrid model is preferred.
+343. induction | intégration / formation initiale | New hires attend a two-day induction.
+344. mentorship | mentorat | The mentorship program is very popular.
+345. peer review | évaluation par les pairs | Peer reviews improve quality.
+346. underperform | sous-performer | The division continued to underperform.
+347. exceed | dépasser | Sales exceeded expectations in Q2.
+348. consistently | de manière constante | She consistently delivers high results.
+349. proactive | proactif | We need a proactive approach.
+350. accountable | responsable | Managers must be accountable for results.
+
+--- PROPERTY & FACILITIES ---
+351. lease | bail | The lease expires in December.
+352. landlord | propriétaire | The landlord agreed to a rent reduction.
+353. tenant | locataire | The tenant gave 30 days notice.
+354. premises | locaux | The company moved to new premises.
+355. renovation | rénovation | Renovations are scheduled for August.
+356. occupancy | taux d'occupation | Occupancy rates are at 95%.
+357. sublease | sous-location | Subleasing is not permitted.
+358. utilities | services / charges | Utilities are included in the rent.
+359. maintenance | entretien | Maintenance issues must be reported promptly.
+360. inspection | inspection | A safety inspection is required annually.
+
+--- TRAVEL & EVENTS ---
+361. itinerary | itinéraire | Please confirm the travel itinerary.
+362. accommodations | hébergement | Accommodations have been booked.
+363. delegate | délégué | Over 200 delegates attended the conference.
+364. venue | lieu | The venue can hold 500 attendees.
+365. keynote | discours inaugural | The keynote was delivered by the CEO.
+366. registration | inscription | Online registration is now open.
+367. reimbursement | remboursement | Submit receipts for reimbursement.
+368. layover | escale | There is a two-hour layover in Dubai.
+369. hospitality | hospitalité | The hospitality sector is recovering.
+370. catering | restauration | Catering will be provided for the event.
+
+--- MANUFACTURING & PRODUCTION ---
+371. output | production | Output increased by 15% this quarter.
+372. defect | défaut | Quality control identified a defect.
+373. specification | spécification | The product must meet all specifications.
+374. tolerance | tolérance | The part is within tolerance.
+375. prototype | prototype | A prototype was tested last month.
+376. assembly | assemblage | The assembly line was upgraded.
+377. batch | lot | A batch of 500 units was produced.
+378. yield | rendement | The production yield improved.
+379. malfunction | dysfonctionnement | A malfunction halted the line.
+380. calibrate | calibrer | Instruments must be calibrated regularly.
+
+--- ENVIRONMENT & SUSTAINABILITY ---
+381. emissions | émissions | Carbon emissions must be reduced.
+382. renewable | renouvelable | Investment in renewable energy is rising.
+383. carbon footprint | empreinte carbone | Reduce your carbon footprint.
+384. compliance | conformité | Environmental compliance is monitored.
+385. audit | audit | An environmental audit was completed.
+386. offset | compenser | Carbon offsets can reduce net emissions.
+387. biodiversity | biodiversité | Protecting biodiversity is a priority.
+388. sustainable | durable | Sustainable sourcing is mandatory.
+389. recycle | recycler | All packaging must be recyclable.
+390. disposal | élimination | Safe disposal of chemicals is required.
+
+--- FINANCE (advanced) ---
+391. amortize | amortir | The loan is amortized over 10 years.
+392. hedge | se couvrir | The company hedges against currency risk.
+393. liquidity | liquidité | Liquidity is essential during a crisis.
+394. solvency | solvabilité | Solvency ratios are closely monitored.
+395. collateral | nantissement / garantie | Property is used as collateral.
+396. tranche | tranche | The second tranche of funding was released.
+397. creditor | créancier | The creditor demanded early repayment.
+398. debtor | débiteur | The debtor has 30 days to repay.
+399. receivable | créance | Accounts receivable totalled $2 million.
+400. payable | dette fournisseur | Accounts payable were settled on time.
+
+--- COMMON TOEIC TRAPS (homophones/confusables) ---
+401. affect (v) | affecter | The delay will affect delivery.
+402. effect (n) | effet | The effect was immediate.
+403. principal (adj) | principal | The principal concern is cost.
+404. principle (n) | principe | This goes against our core principles.
+405. complement | compléter | The new product complements the range.
+406. compliment | complimenter | He complimented her on the presentation.
+407. assure | assurer (rassurer) | I assure you the order is on its way.
+408. ensure | s'assurer que | Ensure all data is backed up.
+409. insure | assurer (financièrement) | Insure the shipment against damage.
+410. stationary | stationnaire / immobile | The vehicle remained stationary.
+411. stationery | papeterie | Order more office stationery.
+412. advise (v) | conseiller | I advise you to review the contract.
+413. advice (n) | conseil | Seek legal advice before signing.
+414. accept | accepter | We accept your offer.
+415. except | sauf | All departments except finance attended.
+416. further | de plus / davantage | For further information, contact us.
+417. farther | plus loin (distance) | The warehouse is farther than expected.
+418. raise | augmenter / lever | We plan to raise prices next quarter.
+419. rise | augmenter (intransitif) | Costs continue to rise.
+420. lay | poser / mettre | Lay the document on the desk.
+421. lie | être allongé / se trouver | The file lies in the archive folder.
+422. adapt | s'adapter | We must adapt to market changes.
+423. adopt | adopter | The board voted to adopt the new policy.
+424. beside | à côté de | Sit beside the client during the meeting.
+425. besides | en plus / d'ailleurs | Besides the cost, consider the timeline.
+426. alternate | alterner / alternatif | Use alternate routes when possible.
+427. alternative | alternative | Do you have an alternative proposal?
+428. economic | économique (macro) | The economic outlook is uncertain.
+429. economical | économique (= qui fait des économies) | An economical solution was found.
+430. historic | historique (important) | This is a historic agreement.
+431. historical | historique (relatif à l'histoire) | For historical reference only.
+432. disinterested | impartial | We need a disinterested third party.
+433. uninterested | pas intéressé | He seemed uninterested in the proposal.
+434. continual | continuel (répété) | Continual interruptions slowed progress.
+435. continuous | continu (sans interruption) | A continuous power supply is needed.
+
+--- ACADEMIC & REPORTING LANGUAGE ---
+436. whereas | alors que / tandis que | Revenue rose, whereas costs fell.
+437. albeit | bien que | A positive result, albeit modest.
+438. nonetheless | néanmoins | The risks are high; nonetheless, we proceed.
+439. henceforth | dorénavant | Henceforth, reports are due on Fridays.
+440. thereby | ainsi / de ce fait | Thereby reducing overall expenditure.
+441. accordingly | en conséquence | Please proceed accordingly.
+442. nonetheless | néanmoins | Nonetheless, the project is viable.
+443. whereby | par lequel | A system whereby complaints are logged.
+444. insofar as | dans la mesure où | This applies insofar as the law permits.
+445. inasmuch as | dans la mesure où | Inasmuch as resources allow, we will help.
+446. conversely | inversement | Conversely, lower demand reduces prices.
+447. correspondingly | de manière correspondante | Costs rose correspondingly.
+448. predominantly | principalement | The workforce is predominantly female.
+449. prospectively | de manière prospective | Costs are assessed prospectively.
+450. retrospectively | rétrospectivement | The policy applies retrospectively.
+
+--- ADVANCED VOCABULARY ---
+451. acumen | perspicacité / flair | He has strong business acumen.
+452. aptitude | aptitude | She showed a natural aptitude for finance.
+453. articulate | articuler / s'exprimer clairement | She articulated the strategy clearly.
+454. candid | franc / sincère | I'll be candid about the risks.
+455. concur | être d'accord | I concur with the recommendation.
+456. deduce | déduire | We can deduce the cause from the data.
+457. discern | discerner | It is difficult to discern the trend.
+458. eloquent | éloquent | He gave an eloquent presentation.
+459. encompass | englober | The role encompasses several departments.
+460. endeavor | s'efforcer / effort | We will endeavor to resolve this quickly.
+461. exemplify | illustrer / être un exemple de | This project exemplifies best practice.
+462. expedient | opportun | A temporary fix may be expedient.
+463. explicit | explicite | The instructions were explicit.
+464. forthright | direct / franc | He was forthright about the challenges.
+465. impartial | impartial | The report must be impartial.
+466. inadvertent | involontaire | An inadvertent error was made.
+467. incur | engager (des frais) | The company incurred significant losses.
+468. indispensable | indispensable | She is indispensable to the team.
+469. infer | inférer | From the data, we can infer growth.
+470. inherent | inhérent | There are inherent risks in expansion.
+471. innovative | innovant | An innovative solution was proposed.
+472. integrate | intégrer | Integrate the new software carefully.
+473. intuitive | intuitif | The interface is intuitive and fast.
+474. lateral | latéral / transversal | Lateral thinking solves complex problems.
+475. meticulous | méticuleux | Meticulous records must be kept.
+476. nominal | nominal / minime | A nominal fee is charged.
+477. nuanced | nuancé | A nuanced approach is required.
+478. objective | objectif (neutre) | The assessment must be objective.
+479. obsolete | obsolète | The system has become obsolete.
+480. optimize | optimiser | Optimize the workflow for efficiency.
+481. paramount | primordial | Quality is of paramount importance.
+482. perceptive | perspicace | She made a perceptive observation.
+483. pragmatic | pragmatique | Take a pragmatic approach.
+484. precedent | précédent | This sets a legal precedent.
+485. proficient | compétent | She is proficient in three languages.
+486. prudent | prudent | It is prudent to review terms carefully.
+487. quantify | quantifier | Quantify the impact where possible.
+488. reciprocal | réciproque | A reciprocal agreement benefits both.
+489. redundant | superflu / licencié | Remove redundant steps from the process.
+490. relevant | pertinent | Only relevant data should be included.
+491. resilient | résilient | A resilient supply chain is essential.
+492. rigorous | rigoureux | A rigorous review process is in place.
+493. robust | robuste | We need a robust contingency plan.
+494. scrutinize | examiner minutieusement | Scrutinize all invoices before payment.
+495. sequential | séquentiel | Follow the steps in sequential order.
+496. significant | significatif | A significant improvement was noted.
+497. streamline | rationaliser | Streamline approval processes.
+498. stringent | strict | Stringent quality checks are mandatory.
+499. substantial | substantiel | A substantial investment is required.
+500. succinct | succinct | Keep your summary succinct.
+501. systematic | systématique | A systematic approach is recommended.
+502. tangible | tangible | We need tangible proof of progress.
+503. transparent | transparent | All costs must be transparent.
+504. uniform | uniforme | Apply a uniform standard.
+505. validate | valider | Validate the data before publishing.
+506. viable | viable | The proposal is commercially viable.
+507. versatile | polyvalent | He is a versatile and adaptable employee.
+508. vested interest | intérêt personnel | He has a vested interest in the outcome.
+509. volatile | volatile | Markets remain volatile.
+510. warranted | justifié | Further investigation is warranted.
+
+--- FINAL 90 HIGH-FREQUENCY TOEIC WORDS ---
+511. accordingly | en conséquence | Act accordingly.
+512. adjacent | adjacent | The office is adjacent to the warehouse.
+513. anticipate | anticiper | Anticipate client needs.
+514. apparent | apparent | The cause was not immediately apparent.
+515. approximately | approximativement | Approximately 200 people attended.
+516. arbitrary | arbitraire | The decision seemed arbitrary.
+517. assemble | assembler | Assemble the team by 9 AM.
+518. assume | supposer | I assume you have read the report.
+519. attain | atteindre | We attained our Q3 targets.
+520. attribute | attribuer | The success is attributed to the team.
+521. authorize | autoriser | You are authorized to proceed.
+522. capacity | capacité | We are running at full capacity.
+523. cease | cesser | Operations will cease at midnight.
+524. clarify | clarifier | Please clarify your request.
+525. collaborate | collaborer | We will collaborate with the client.
+526. comparable | comparable | Results are comparable to last year.
+527. compile | compiler | Compile the data into a report.
+528. concede | concéder | She conceded the point gracefully.
+529. conduct | mener | Conduct a thorough review.
+530. consecutive | consécutif | Three consecutive quarters of growth.
+531. consolidate | consolider | Consolidate all accounts by month end.
+532. constitute | constituer | This constitutes a breach of contract.
+533. convey | transmettre | Convey the message promptly.
+534. defer | reporter | Payment can be deferred.
+535. deplete | épuiser | Stocks have been depleted.
+536. designate | désigner | She was designated as team leader.
+537. determine | déterminer | Determine the root cause.
+538. diminish | diminuer | Quality has diminished over time.
+539. disrupt | perturber | The strike disrupted operations.
+540. distribute | distribuer | Distribute the reports by 5 PM.
+541. duration | durée | The contract is for a duration of one year.
+542. enhance | améliorer | Enhance the customer experience.
+543. estimate | estimer | Estimate the total cost.
+544. evaluate | évaluer | Evaluate all available options.
+545. evident | évident | The problem was evident immediately.
+546. exceed | dépasser | We exceeded our annual target.
+547. exclude | exclure | The clause excludes third-party claims.
+548. expand | développer | Expand into new markets.
+549. expertise | expertise | We have expertise in financial services.
+550. expose | exposer | Do not expose data to third parties.
+551. extensive | étendu | Extensive testing was conducted.
+552. facilitate | faciliter | Technology facilitates remote work.
+553. fluctuate | fluctuer | Demand fluctuates seasonally.
+554. generate | générer | The campaign generated 500 leads.
+555. guidelines | directives | Follow the company's guidelines.
+556. impose | imposer | New tariffs were imposed.
+557. inadequate | inadéquat | The current system is inadequate.
+558. incorporate | incorporer | Incorporate feedback into the design.
+559. indicate | indiquer | Results indicate a positive trend.
+560. influence | influencer | External factors influenced the decision.
+561. initiate | initier | Initiate the onboarding process.
+562. inspect | inspecter | Inspect all goods upon delivery.
+563. insufficient | insuffisant | Funds are insufficient.
+564. maintain | maintenir | Maintain accurate records.
+565. manipulate | manipuler | Do not manipulate the data.
+566. maximize | maximiser | Maximize return on investment.
+567. minimize | minimiser | Minimize disruption to operations.
+568. modify | modifier | Modify the contract as agreed.
+569. mutual | mutuel | A mutual agreement was reached.
+570. notify | notifier | Notify all stakeholders immediately.
+571. obtain | obtenir | Obtain written approval.
+572. omit | omettre | Do not omit any required fields.
+573. option | option | Consider all available options.
+574. originate | provenir / originer | The idea originated in the R&D team.
+575. outline | esquisser | Outline the key risks.
+576. perform | effectuer / réaliser | Perform a risk assessment.
+577. permit | permettre / autoriser | Photography is not permitted.
+578. postpone | reporter | The meeting was postponed.
+579. precise | précis | Be precise in your calculations.
+580. prohibit | interdire | Smoking is prohibited on premises.
+581. propose | proposer | I propose a different approach.
+582. realistic | réaliste | Set realistic targets.
+583. recommend | recommander | I recommend a phased approach.
+584. reduce | réduire | Reduce unnecessary expenditure.
+585. refer | se référer | Refer to the appendix for details.
+586. regulate | réguler | The industry is tightly regulated.
+587. relevant | pertinent | Ensure data is relevant and current.
+588. request | demander | Please submit your request in writing.
+589. require | requérir | Approval is required at each stage.
+590. resolve | résoudre | Resolve the issue by end of day.
+591. restrict | restreindre | Access is restricted to senior staff.
+592. retain | retenir / conserver | Retain all documentation for five years.
+593. sufficient | suffisant | Is the budget sufficient?
+594. summarize | résumer | Summarize the key findings.
+595. supplement | compléter / supplément | Supplement the report with charts.
+596. suspend | suspendre | Payments were suspended temporarily.
+597. transfer | transférer | Transfer the funds by noon.
+598. undermine | saper | Poor communication undermines trust.
+599. utilize | utiliser | Utilize available resources efficiently.
+600. verify | vérifier | Verify all figures before submission.`;
+
+const words = data.split("\n").map(l=>{
+ const [word,translation,example] = l.split("|").map(s=>s.trim());
+ return {word,translation,example}
+});
+
+const container = document.getElementById("content");
+
+function render(list){
+ container.innerHTML = `
+   <div class="grid">
+   ${list.map(item=>`
+      <div class="card">
+        <div class="word">${item.word}</div>
+        <div class="translation">${item.translation}</div>
+        <div class="example">${item.example}</div>
+      </div>
+   `).join("")}
+   </div>
+ `;
+}
+
+render(words);
+
+document.getElementById("search").addEventListener("input",e=>{
+ const q = e.target.value.toLowerCase();
+ const filtered = words.filter(w =>
+   w.word.toLowerCase().includes(q) ||
+   w.translation.toLowerCase().includes(q) ||
+   w.example.toLowerCase().includes(q)
+ );
+ render(filtered);
+});
+</script>
+
+</body>
+</html>
