@@ -1,0 +1,528 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ma Liste Matériel Trek</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --forest: #1a2e1a;
+    --moss: #3d5a3e;
+    --sage: #7a9e7e;
+    --cream: #f5f0e8;
+    --sand: #e8dcc8;
+    --amber: #c8883c;
+    --ember: #e04a1f;
+    --text: #1a1a1a;
+    --muted: #6b6b6b;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--cream);
+    color: var(--text);
+    min-height: 100vh;
+  }
+
+  /* HEADER */
+  header {
+    background: var(--forest);
+    padding: 48px 40px 36px;
+    position: relative;
+    overflow: hidden;
+  }
+  header::before {
+    content: '';
+    position: absolute;
+    top: -60px; right: -60px;
+    width: 300px; height: 300px;
+    border-radius: 50%;
+    background: rgba(61,90,62,0.4);
+  }
+  header::after {
+    content: '';
+    position: absolute;
+    bottom: -80px; left: 20%;
+    width: 200px; height: 200px;
+    border-radius: 50%;
+    background: rgba(122,158,126,0.15);
+  }
+  .header-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 1;
+  }
+  .header-tag {
+    display: inline-block;
+    background: var(--sage);
+    color: white;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    padding: 5px 14px;
+    border-radius: 20px;
+    margin-bottom: 16px;
+  }
+  header h1 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(52px, 8vw, 90px);
+    color: var(--cream);
+    line-height: 0.9;
+    letter-spacing: 2px;
+  }
+  header h1 span {
+    color: var(--amber);
+  }
+  .header-sub {
+    color: var(--sage);
+    font-size: 16px;
+    margin-top: 16px;
+    font-weight: 300;
+  }
+  .header-total {
+    margin-top: 28px;
+    display: inline-flex;
+    align-items: center;
+    gap: 16px;
+    background: rgba(255,255,255,0.07);
+    border: 1px solid rgba(255,255,255,0.12);
+    border-radius: 12px;
+    padding: 14px 24px;
+  }
+  .total-label { color: var(--sage); font-size: 13px; }
+  .total-amount {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 36px;
+    color: var(--amber);
+    letter-spacing: 1px;
+  }
+  .item-count {
+    color: #ffffff88;
+    font-size: 13px;
+    border-left: 1px solid rgba(255,255,255,0.15);
+    padding-left: 16px;
+  }
+
+  /* GRID */
+  main {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 52px 24px 80px;
+  }
+
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(310px, 1fr));
+    gap: 28px;
+  }
+
+  /* CARD */
+  .card {
+    background: white;
+    border-radius: 18px;
+    overflow: hidden;
+    box-shadow: 0 4px 24px rgba(0,0,0,0.07);
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+    display: flex;
+    flex-direction: column;
+  }
+  .card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 40px rgba(0,0,0,0.13);
+  }
+
+  .card-img {
+    position: relative;
+    height: 200px;
+    overflow: hidden;
+    background: var(--sand);
+  }
+  .card-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    padding: 16px;
+    transition: transform 0.4s ease;
+  }
+  .card:hover .card-img img {
+    transform: scale(1.05);
+  }
+
+  /* Source badge */
+  .source-badge {
+    position: absolute;
+    top: 12px;
+    left: 12px;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    padding: 4px 10px;
+    border-radius: 20px;
+  }
+  .source-amazon {
+    background: #FF9900;
+    color: #111;
+  }
+  .source-decathlon {
+    background: #007dc5;
+    color: white;
+  }
+
+  .card-body {
+    padding: 22px 24px 24px;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .card-category {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--sage);
+  }
+
+  .card-name {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 24px;
+    letter-spacing: 0.5px;
+    line-height: 1.1;
+    color: var(--forest);
+  }
+
+  .card-desc {
+    font-size: 13px;
+    color: var(--muted);
+    line-height: 1.6;
+    flex: 1;
+  }
+
+  .card-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 14px;
+    padding-top: 16px;
+    border-top: 1px solid var(--sand);
+  }
+
+  .stars {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .stars-visual {
+    display: flex;
+    gap: 2px;
+  }
+  .star {
+    font-size: 14px;
+  }
+  .star.full { color: #f0a500; }
+  .star.half { color: #f0a500; opacity: 0.6; }
+  .star.empty { color: #ddd; }
+  .stars-count {
+    font-size: 12px;
+    color: var(--muted);
+    font-weight: 500;
+  }
+
+  .price-box {
+    text-align: right;
+  }
+  .price {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 30px;
+    color: var(--ember);
+    letter-spacing: 0.5px;
+  }
+  .price-note {
+    font-size: 10px;
+    color: var(--muted);
+  }
+
+  .btn-link {
+    display: block;
+    margin-top: 14px;
+    text-align: center;
+    background: var(--forest);
+    color: var(--cream);
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    padding: 12px;
+    border-radius: 10px;
+    transition: background 0.2s;
+  }
+  .btn-link:hover {
+    background: var(--moss);
+  }
+
+  /* Decathlon btn */
+  .btn-decathlon {
+    background: #007dc5;
+  }
+  .btn-decathlon:hover {
+    background: #005a99;
+  }
+
+  /* SUMMARY BAR */
+  .summary {
+    margin-top: 56px;
+    background: var(--forest);
+    border-radius: 18px;
+    padding: 32px 36px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 20px;
+  }
+  .summary h3 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 28px;
+    color: var(--cream);
+    letter-spacing: 1px;
+  }
+  .summary-items {
+    display: flex;
+    gap: 28px;
+    flex-wrap: wrap;
+  }
+  .summary-item {
+    text-align: center;
+  }
+  .summary-item .s-val {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 32px;
+    color: var(--amber);
+  }
+  .summary-item .s-lbl {
+    font-size: 12px;
+    color: var(--sage);
+  }
+  .summary-total {
+    text-align: right;
+  }
+  .summary-total .t-label {
+    font-size: 13px;
+    color: var(--sage);
+  }
+  .summary-total .t-price {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 52px;
+    color: white;
+    letter-spacing: 1px;
+    line-height: 1;
+  }
+
+  footer {
+    text-align: center;
+    padding: 32px;
+    font-size: 12px;
+    color: var(--muted);
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="header-inner">
+    <span class="header-tag">⛺ Équipement Trek</span>
+    <h1>MA LISTE <span>MATÉRIEL</span></h1>
+    <p class="header-sub">Tout le nécessaire pour partir à l'aventure</p>
+    <div class="header-total">
+      <div>
+        <div class="total-label">Budget estimé</div>
+        <div class="total-amount" id="totalPrice">—</div>
+      </div>
+      <div class="item-count">7 articles</div>
+    </div>
+  </div>
+</header>
+
+<main>
+  <div class="grid" id="grid"></div>
+
+  <div class="summary">
+    <div>
+      <h3>Récapitulatif</h3>
+      <p style="color:var(--sage);font-size:13px;margin-top:6px;">Prix Amazon/Decathlon indicatifs</p>
+    </div>
+    <div class="summary-items">
+      <div class="summary-item">
+        <div class="s-val">7</div>
+        <div class="s-lbl">Articles</div>
+      </div>
+      <div class="summary-item">
+        <div class="s-val" id="avgRating">—</div>
+        <div class="s-lbl">Note moy.</div>
+      </div>
+      <div class="summary-item">
+        <div class="s-val">2</div>
+        <div class="s-lbl">Sources</div>
+      </div>
+    </div>
+    <div class="summary-total">
+      <div class="t-label">Total estimé</div>
+      <div class="t-price" id="summaryTotal">—</div>
+    </div>
+  </div>
+</main>
+
+<footer>
+  Prix indicatifs relevés en avril 2026 · Les prix peuvent varier selon les offres du moment
+</footer>
+
+<script>
+const products = [
+  {
+    category: "Éclairage",
+    name: "Lampe Frontale Blukar",
+    desc: "2000 lumens · 8 modes · Capteur de mouvement · IPX5 étanche · Autonomie 30h · Recharge USB-C · Ultra-légère 84g",
+    price: 17.99,
+    rating: 4.4,
+    reviewCount: "2 100+",
+    source: "amazon",
+    url: "https://www.amazon.fr/dp/B0BLVT2Y9N",
+    img: "https://m.media-amazon.com/images/I/71Q5q3YQMRL._AC_SL1500_.jpg"
+  },
+  {
+    category: "Énergie",
+    name: "Batterie Externe",
+    desc: "Power bank compact pour recharger smartphone, GPS et autres appareils en randonnée. Charge rapide USB-C.",
+    price: 25.99,
+    rating: 4.3,
+    reviewCount: "800+",
+    source: "amazon",
+    url: "https://www.amazon.fr/gp/product/B0CGZRGWW3",
+    img: "https://m.media-amazon.com/images/I/61pgbFRMsLL._AC_SL1500_.jpg"
+  },
+  {
+    category: "Cuisine",
+    name: "Réchaud Portable",
+    desc: "Réchaud à gaz compact pour randonnée et trekking. Léger, stable, allumage piezo. Idéal bivouac.",
+    price: 22.99,
+    rating: 4.3,
+    reviewCount: "950+",
+    source: "amazon",
+    url: "https://www.amazon.fr/dp/B0DJ2WF5TF",
+    img: "https://m.media-amazon.com/images/I/61B6uHl-dRL._AC_SL1500_.jpg"
+  },
+  {
+    category: "Cuisine",
+    name: "Popote Inox 2 Personnes",
+    desc: "10 éléments : casserole 1,6L, couvercle/passoire, 2 assiettes creuses, 2×3 couverts. Poignée repliable brevetée. 560g. Tout feu.",
+    price: 16.99,
+    rating: 4.5,
+    reviewCount: "695",
+    source: "decathlon",
+    url: "https://www.decathlon.fr/p/popote-100-de-camping-et-bivouac-en-acier-inox-2-personnes-10-elements/_/R-p-174675",
+    img: "https://contents.mediadecathlon.com/p2157932/k$2d77fe9e54f4a5e4ead7a7ea06e6e32e/sq/popote-100-de-camping-en-acier-inox-2-personnes-10-elements.jpg"
+  },
+  {
+    category: "Allumage",
+    name: "Briquet Électrique",
+    desc: "Briquet rechargeable USB. Sans gaz ni flamme. Résistant au vent. Idéal pour allumer le réchaud en toute condition météo.",
+    price: 9.99,
+    rating: 4.2,
+    reviewCount: "4 500+",
+    source: "amazon",
+    url: "https://www.amazon.fr/dp/B079VTJHJG",
+    img: "https://m.media-amazon.com/images/I/71F9LF5hgQL._AC_SL1500_.jpg"
+  },
+  {
+    category: "Couteau",
+    name: "Couteau de Survie",
+    desc: "Couteau multifonctions pour la randonnée et la survie. Lame acier inox. Manche ergonomique. Étui inclus.",
+    price: 19.99,
+    rating: 4.4,
+    reviewCount: "1 200+",
+    source: "amazon",
+    url: "https://www.amazon.fr/dp/B0CDPTNJNS",
+    img: "https://m.media-amazon.com/images/I/71lHSEjEKaL._AC_SL1500_.jpg"
+  },
+  {
+    category: "Cordage",
+    name: "Paracorde Tactique",
+    desc: "Corde paracord 550 multicolore. Résistance 250kg. Utilisations : attacher, créer un abri, fixations diverses en trek.",
+    price: 8.99,
+    rating: 4.5,
+    reviewCount: "3 100+",
+    source: "amazon",
+    url: "https://www.amazon.fr/dp/B0CR1GRGPW",
+    img: "https://m.media-amazon.com/images/I/71x+Nz3JkAL._AC_SL1500_.jpg"
+  }
+];
+
+function renderStars(rating) {
+  const full = Math.floor(rating);
+  const half = rating % 1 >= 0.3 ? 1 : 0;
+  const empty = 5 - full - half;
+  let html = '<div class="stars-visual">';
+  for (let i = 0; i < full; i++) html += '<span class="star full">★</span>';
+  if (half) html += '<span class="star half">★</span>';
+  for (let i = 0; i < empty; i++) html += '<span class="star empty">★</span>';
+  html += '</div>';
+  return html;
+}
+
+function buildCards() {
+  const grid = document.getElementById('grid');
+  let total = 0;
+  let totalRating = 0;
+
+  products.forEach(p => {
+    total += p.price;
+    totalRating += p.rating;
+
+    const isDecathlon = p.source === 'decathlon';
+    const badgeClass = isDecathlon ? 'source-decathlon' : 'source-amazon';
+    const badgeLabel = isDecathlon ? 'Decathlon' : 'Amazon';
+    const btnClass = isDecathlon ? 'btn-decathlon' : '';
+
+    const card = document.createElement('div');
+    card.className = 'card';
+    card.innerHTML = `
+      <div class="card-img">
+        <img src="${p.img}" alt="${p.name}" loading="lazy" onerror="this.src='https://via.placeholder.com/300x200/e8dcc8/3d5a3e?text=${encodeURIComponent(p.name)}'">
+        <span class="source-badge ${badgeClass}">${badgeLabel}</span>
+      </div>
+      <div class="card-body">
+        <div class="card-category">${p.category}</div>
+        <div class="card-name">${p.name}</div>
+        <div class="card-desc">${p.desc}</div>
+        <div class="card-footer">
+          <div class="stars">
+            ${renderStars(p.rating)}
+            <span class="stars-count">${p.rating}/5 · (${p.reviewCount} avis)</span>
+          </div>
+          <div class="price-box">
+            <div class="price">${p.price.toFixed(2).replace('.', ',')} €</div>
+          </div>
+        </div>
+        <a href="${p.url}" target="_blank" class="btn-link ${btnClass}">Voir sur ${badgeLabel} →</a>
+      </div>
+    `;
+    grid.appendChild(card);
+  });
+
+  const fmt = v => v.toFixed(2).replace('.', ',') + ' €';
+  document.getElementById('totalPrice').textContent = fmt(total);
+  document.getElementById('summaryTotal').textContent = fmt(total);
+  document.getElementById('avgRating').textContent = (totalRating / products.length).toFixed(1) + '/5';
+}
+
+buildCards();
+</script>
+</body>
+</html>
